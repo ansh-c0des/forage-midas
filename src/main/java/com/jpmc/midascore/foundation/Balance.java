@@ -6,18 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Balance {
     private float amount;
 
-    public Balance() {
-    }
-
     public Balance(float amount) {
-        this.amount = amount;
-    }
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
         this.amount = amount;
     }
 

@@ -9,8 +9,6 @@ public class Transaction {
     private float amount;
     private float incentive;
 
-    public Transaction() {}
-
     public Transaction(long senderId, long recipientId, float amount) {
         this.senderId = senderId;
         this.recipientId = recipientId;
@@ -21,28 +19,12 @@ public class Transaction {
         return senderId;
     }
 
-    public void setSenderId(long senderId) {
-        this.senderId = senderId;
-    }
-
     public long getRecipientId() {
         return recipientId;
     }
 
-    public void setRecipientId(long recipientId) {
-        this.recipientId = recipientId;
-    }
-
     public float getAmount() {
         return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public float getIncentive() {
-        return incentive;
     }
 
     public void setIncentive(float incentive) {
