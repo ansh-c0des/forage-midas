@@ -1,0 +1,38 @@
+general:
+  kafka-topic: midas-transactions  # Kafka topic name
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      auto.create.topics.enable: true  # Ensures topics are auto-created
+    producer:
+      topic: ${general.kafka-topic}  # Reference the general topic name
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: midas-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.jpmc.midascore.foundation
+
+  datasource:
+    url: jdbc:h2:mem:testdb  # H2 in-memory database
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update  # Automatically updates schema
+    show-sql: true  # Enables SQL logging for debugging
+
+incentives:
+  api:
+    url: http://localhost:8080/incentive
+
+server:
+  port: 33400
